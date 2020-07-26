@@ -8,10 +8,3 @@ CREATE TABLE burgers (
     type VARCHAR(255) not NULL,
     eaten BOOLEAN DEFAULT false
 );
-
---  CREATE TABLE burger_type
---   (
--- 	id int AUTO_INCREMENT PRIMARY KEY ,
--- 	burger_name varchar(255) NOT NULL,
--- 	devoured BOOLEAN DEFAULT false,
--- );
