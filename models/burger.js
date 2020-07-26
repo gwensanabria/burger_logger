@@ -1,5 +1,5 @@
 // import orm
-const orm = require("../config/orm")
+const orm = require("../config/orm.js")
 
 const burger = {
     all: function(cb) {
@@ -18,11 +18,11 @@ const burger = {
             cb(res)
         })
     },
-    // delete: function(condition, cb) {
-    //     orm.delete("burgers", condition, function(res) {
-    //         cb(res)
-    //     })
-    // }
+    delete: function(condition, cb) {
+        orm.delete("burgers", condition, function(res) {
+            cb(res)
+        })
+    }
 }
 
 // export

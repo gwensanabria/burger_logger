@@ -1,33 +1,36 @@
-<h1>Burgers</h1>
+<div id="eaten" class="ordereaten">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-monospace text-center">Order Up!</h4>
+                <ul>
+                    {{#each burgers}}
+                    {{#unless eaten}}
+                    {{> burgers/burger-block eaten=true}}
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+                <form class="create-form font-weight-light text-muted" name="myForm" onsubmit="return validateForm()"
+                    method="POST">
+                    <div class="form-group">
+                        <p>Place an order here: </p>
+                        </label>
+                        <input type="text" id="brg" name="type">
+                        <button id="button" type="submit"><i class="fas fa-plus"></i></button>
+                    </div>
+                </form>
+            </div>
 
-<h2>Uneaten Burgers</h2>
-
-<ul>
-    {{#each burgers}}
-        {{#unless eat}}
-            {{> burgers/burgers-block uneaten=true}}
-        {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Eaten Burgers</h2>
-
-<ul>
-    {{#each burgers}}
-        {{#if eat}}
-            {{> burgers/burgers-block uneaten=false}}
-        {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="eat">Type of Burger:</label>
-        <input type="text" id="eat" name="type">
+            <div class="col-md-6">
+                <h4 class="text-monospace text-center">Eaten!</h4>
+                <ul>
+                    {{#each burgers}}
+                    {{#if eaten}}
+                    {{> burgers/burger-block eaten=false}}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <button type="submit">Add Burger</button>
-
-</form>
+</div>

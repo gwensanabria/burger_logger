@@ -4,7 +4,7 @@ const express = require("express")
 const router = express.Router()
 
 // import model
-const burger = require("../models/burger")
+const burger = require("../models/burger.js")
 
 // create routes
 router.get("/", function(req, res) {
@@ -19,9 +19,9 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
     burger.create([
-        "type", "eat"
+        "type", "eaten"
     ], [
-        req.body.type, req.body.eat
+        req.body.type, req.body.eaten
     ], function(result) {
         res.json({ id: result.insertId})
     })
@@ -33,7 +33,8 @@ router.put("/api/burgers/:id", function(req, res) {
     console.log("condition", condition)
 
     burger.update({
-        eat: req.body.eat
+        eaten: req.body.eaten
+        // eat: req.body.eat
     }, condition, function(result) {
         if (result.changedRows == 0) {
             // if no rows were changed, then id must not exist, 404
@@ -44,17 +45,17 @@ router.put("/api/burgers/:id", function(req, res) {
     })
 })
 
-// router.delete("/api/burgers/:id", function(req, res) {
-//     const condition = "id = " + req.params.id;
+router.delete("/api/burgers/:id", function(req, res) {
+    const condition = "id = " + req.params.id;
 
-//     burger.delete(condition, function(result) {
-//         if (result.affectedRows == 0) {
-//             return res.status(404).end()
-//         } else {
-//             res.status(200).end()
-//         }
-//     })
-// })
+    burger.delete(condition, function(result) {
+        if (result.affectedRows == 0) {
+            return res.status(404).end()
+        } else {
+            res.status(200).end()
+        }
+    })
+})
 
 // export
 module.exports = router;

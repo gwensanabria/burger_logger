@@ -1,0 +1,9 @@
+<li>
+    {{type}}
+
+    <button class="change-eaten primary-btn" data-id="{{id}}" data-neweaten="{{eaten}}">
+        {{#if eaten}}EAT IT!{{else}}REORDER{{/if}}
+    </button>
+
+    <button class="delete-burger" data-id"{{this.id}}><i class="fas fa-times"></i></button>
+</li>
